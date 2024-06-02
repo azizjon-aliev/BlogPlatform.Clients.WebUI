@@ -1,10 +1,10 @@
 import {RandomPostItem} from "./PopularPostItem.tsx";
 import {useEffect, useState} from "react";
-import {Post} from "../../../models/Post.ts";
+import {PostShort} from "../../../models/Post.ts";
 import {getPopularPosts} from "../../../services/PostService.ts";
 
 export const PopularPostList = () => {
-    const [posts, setPosts] = useState<Post[]>([])
+    const [posts, setPosts] = useState<PostShort[]>([])
 
     useEffect(() => {
         getPopularPosts(5).then(posts => setPosts(posts))

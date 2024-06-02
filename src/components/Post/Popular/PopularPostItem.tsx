@@ -1,10 +1,10 @@
-import {Post} from "../../../models/Post.ts";
+import {PostShort} from "../../../models/Post.ts";
 import {FC} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faClock} from "@fortawesome/free-solid-svg-icons/faClock";
 
 interface PopularPostItemProps {
-    post: Post;
+    post: PostShort;
 }
 
 export const RandomPostItem: FC<PopularPostItemProps> = (props) => {

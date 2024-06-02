@@ -1,6 +1,91 @@
-import {Post} from "../models/Post.ts";
+import {Post, PostShort} from "../models/Post.ts";
 
-export const getRandomPosts = async (count: number): Promise<Post[]> => {
+
+export const getPosts = async (): Promise<Post[]> => {
+    return [
+        {
+            id: 1,
+            image: 'https://via.placeholder.com/150',
+            title: 'Post 1',
+            content: 'Content 1',
+            createdAt: '2021-07-01',
+            createdBy: 'User 1'
+        },
+        {
+            id: 2,
+            image: 'https://via.placeholder.com/150',
+            title: 'Post 2',
+            content: 'Content 2',
+            createdAt: '2021-07-02',
+            createdBy: 'User 2'
+        },
+        {
+            id: 3,
+            image: 'https://via.placeholder.com/150',
+            title: 'Post 3',
+            content: 'Content 3',
+            createdAt: '2021-07-03',
+            createdBy: 'User 3'
+        },
+        {
+            id: 4,
+            image: 'https://via.placeholder.com/150',
+            title: 'Post 4',
+            content: 'Content 4',
+            createdAt: '2021-07-04',
+            createdBy: 'User 4'
+        },
+        {
+            id: 5,
+            image: 'https://via.placeholder.com/150',
+            title: 'Post 5',
+            content: 'Content 5',
+            createdAt: '2021-07-05',
+            createdBy: 'User 5'
+        },
+        {
+            id: 6,
+            image: 'https://via.placeholder.com/150',
+            title: 'Post 6',
+            content: 'Content 6',
+            createdAt: '2021-07-06',
+            createdBy: 'User 6'
+        },
+        {
+            id: 7,
+            image: 'https://via.placeholder.com/150',
+            title: 'Post 7',
+            content: 'Content 7',
+            createdAt: '2021-07-07',
+            createdBy: 'User 7'
+        },
+        {
+            id: 8,
+            image: 'https://via.placeholder.com/150',
+            title: 'Post 8',
+            content: 'Content 8',
+            createdAt: '2021-07-08',
+            createdBy: 'User 8'
+        },
+        {
+            id: 9,
+            image: 'https://via.placeholder.com/150',
+            title: 'Post 9',
+            content: 'Content 9',
+            createdAt: '2021-07-09',
+            createdBy: 'User 9'
+        },
+        {
+            id: 10,
+            image: 'https://via.placeholder.com/150',
+            title: 'Post 10',
+            content: 'Content 10',
+            createdBy: 'User 10',
+            createdAt: '2021-07-32',
+        }
+    ]
+}
+export const getRandomPosts = async (count: number): Promise<PostShort[]> => {
     const posts = [
         {
             id: 1,
@@ -109,7 +194,7 @@ export const getRandomPosts = async (count: number): Promise<Post[]> => {
     return posts.slice(0, count);
 }
 
-export const getPopularPosts = async (count: number): Promise<Post[]> => {
+export const getPopularPosts = async (count: number): Promise<PostShort[]> => {
     const posts = [
         {
             id: 1,

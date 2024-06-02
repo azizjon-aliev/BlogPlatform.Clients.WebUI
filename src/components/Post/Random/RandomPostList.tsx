@@ -1,10 +1,10 @@
-import {RandomPostItem} from "./RandomPostItem.tsx";
 import {useEffect, useState} from "react";
-import {Post} from "../../../models/Post.ts";
+import {PostShort} from "../../../models/Post.ts";
 import {getRandomPosts} from "../../../services/PostService.ts";
+import {RandomPostItem} from "../Popular/PopularPostItem.tsx";
 
 export const RandomPostList = () => {
-    const [posts, setPosts] = useState<Post[]>([]);
+    const [posts, setPosts] = useState<PostShort[]>([]);
 
     useEffect(() => {
         getRandomPosts(3).then((data) => {

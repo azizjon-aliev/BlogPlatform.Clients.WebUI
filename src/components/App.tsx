@@ -5,8 +5,24 @@ import {TagList} from "./Tag/TagList.tsx";
 import {SocialPluginList} from "./SocialPlugin/SocialPluginList.tsx";
 import {PopularPostList} from "./Post/Popular/PopularPostList.tsx";
 import {Footer} from "./Footer.tsx";
+import {BigPost} from "./Post/BigPost.tsx";
+import {useEffect, useState} from "react";
+import {Post} from "../models/Post.ts";
+import {getPosts} from "../services/PostService.ts";
+import {PostList} from "./Post/PostList.tsx";
 
 export default function App() {
+    const [posts, setPosts] = useState<Post[]>([])
+    const [bigPost, setBigPost] = useState<Post>()
+    const [isOpenSidebar] = useState(true)
+
+    useEffect(() => {
+        getPosts().then((data) => {
+            setPosts(data)
+            setBigPost(data[0])
+        })
+    }, []);
+
     return (
         <div className='font-poppins text-gray-600'>
             {/* navbar */}
@@ -29,7 +45,7 @@ export default function App() {
 
                         {/* title */}
                         <div className="flex bg-white px-3 py-2 justify-between items-center rounded-sm mb-5">
-                            <h5 className="text-base uppercase font-semibold font-roboto">Категория 1</h5>
+                            <h5 className="text-base uppercase font-semibold font-roboto">Технологии</h5>
                             <a href="#"
                                className="text-white py-1 px-3 rounded-sm uppercase text-sm bg-blue-500 border border-blue-500 hover:text-blue-500 hover:bg-transparent transition">
                                 Все
@@ -37,160 +53,10 @@ export default function App() {
                         </div>
 
                         {/* big post */}
-                        <div className="rounded-sm overflow-hidden bg-white shadow-sm">
-                            <a href="view.html" className="block rounded-md overflow-hidden">
-                                <img src="src/images/img-12.jpg"
-                                     className="w-full h-96 object-cover transform hover:scale-110 transition duration-500"/>
-                            </a>
-                            <div className="p-4 pb-5">
-                                <a href="view.html">
-                                    <h2
-                                        className="block text-2xl font-semibold text-gray-700 hover:text-blue-500 transition font-roboto">
-                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iddo loremque, totam
-                                        architecto odit pariatur Lorem ips dolor.
-                                    </h2>
-                                </a>
-
-                                <p className="text-gray-500 text-sm mt-2">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem distinctio
-                                    doloremque
-                                    placeat ipsa! Sequi, recusandae. In numquam similique molestiae error, magni velit
-                                    suscipit
-                                    repudiandae itaqu....
-                                </p>
-                                <div className="mt-3 flex space-x-4">
-                                    <div className="flex text-gray-400 text-sm items-center">
-                                <span className="mr-2 text-xs">
-                                    <i className="far fa-user"></i>
-                                </span>
-                                        Blogging Tips
-                                    </div>
-                                    <div className="flex text-gray-400 text-sm items-center">
-                                <span className="mr-2 text-xs">
-                                    <i className="far fa-clock"></i>
-                                </span>
-                                        June 11, 2021
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {bigPost && <BigPost post={bigPost}/>}
 
                         {/* regular post */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                            <div className="rounded-sm bg-white p-4 pb-5 shadow-sm">
-                                <a href="#" className="block rounded-md overflow-hidden">
-                                    <img src="src/images/img-7.jpg"
-                                         className="w-full h-60 object-cover transform hover:scale-110 transition duration-500"/>
-                                </a>
-                                <div className="mt-3">
-                                    <a href="#">
-                                        <h2
-                                            className="block text-xl font-semibold text-gray-700 hover:text-blue-500 transition font-roboto">
-                                            Lorem, ipsum dolor sit amet consec tetur adipisicing elit.
-                                        </h2>
-                                    </a>
-                                    <div className="mt-2 flex space-x-3">
-                                        <div className="flex text-gray-400 text-sm items-center">
-                                    <span className="mr-2 text-xs">
-                                        <i className="far fa-user"></i>
-                                    </span>
-                                            Blogging Tips
-                                        </div>
-                                        <div className="flex text-gray-400 text-sm items-center">
-                                    <span className="mr-2 text-xs">
-                                        <i className="far fa-clock"></i>
-                                    </span>
-                                            June 11, 2021
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="rounded-sm bg-white p-4 pb-5 shadow-sm">
-                                <a href="#" className="block rounded-md overflow-hidden">
-                                    <img src="src/images/img-6.jpg"
-                                         className="w-full h-60 object-cover transform hover:scale-110 transition duration-500"/>
-                                </a>
-                                <div className="mt-3">
-                                    <a href="#">
-                                        <h2
-                                            className="block text-xl font-semibold text-gray-700 hover:text-blue-500 transition font-roboto">
-                                            Lorem, ipsum dolor sit amet consec tetur adipisicing elit.
-                                        </h2>
-                                    </a>
-                                    <div className="mt-2 flex space-x-3">
-                                        <div className="flex text-gray-400 text-sm items-center">
-                                    <span className="mr-2 text-xs">
-                                        <i className="far fa-user"></i>
-                                    </span>
-                                            Blogging Tips
-                                        </div>
-                                        <div className="flex text-gray-400 text-sm items-center">
-                                    <span className="mr-2 text-xs">
-                                        <i className="far fa-clock"></i>
-                                    </span>
-                                            June 11, 2021
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="rounded-sm bg-white p-4 pb-5 shadow-sm">
-                                <a href="#" className="block rounded-md overflow-hidden">
-                                    <img src="src/images/img-5.jpg"
-                                         className="w-full h-60 object-cover transform hover:scale-110 transition duration-500"/>
-                                </a>
-                                <div className="mt-3">
-                                    <a href="#">
-                                        <h2
-                                            className="block text-xl font-semibold text-gray-700 hover:text-blue-500 transition font-roboto">
-                                            Lorem, ipsum dolor sit amet consec tetur adipisicing elit.
-                                        </h2>
-                                    </a>
-                                    <div className="mt-2 flex space-x-3">
-                                        <div className="flex text-gray-400 text-sm items-center">
-                                    <span className="mr-2 text-xs">
-                                        <i className="far fa-user"></i>
-                                    </span>
-                                            Blogging Tips
-                                        </div>
-                                        <div className="flex text-gray-400 text-sm items-center">
-                                    <span className="mr-2 text-xs">
-                                        <i className="far fa-clock"></i>
-                                    </span>
-                                            June 11, 2021
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="rounded-sm bg-white p-4 pb-5 shadow-sm">
-                                <a href="#" className="block rounded-md overflow-hidden">
-                                    <img src="src/images/img-11.jpg"
-                                         className="w-full h-60 object-cover transform hover:scale-110 transition duration-500"/>
-                                </a>
-                                <div className="mt-3">
-                                    <a href="#">
-                                        <h2
-                                            className="block text-xl font-semibold text-gray-700 hover:text-blue-500 transition font-roboto">
-                                            Lorem, ipsum dolor sit amet consec tetur adipisicing elit.
-                                        </h2>
-                                    </a>
-                                    <div className="mt-2 flex space-x-3">
-                                        <div className="flex text-gray-400 text-sm items-center">
-                                    <span className="mr-2 text-xs">
-                                        <i className="far fa-user"></i>
-                                    </span>
-                                            Blogging Tips
-                                        </div>
-                                        <div className="flex text-gray-400 text-sm items-center">
-                                    <span className="mr-2 text-xs">
-                                        <i className="far fa-clock"></i>
-                                    </span>
-                                            June 11, 2021
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                        <PostList posts={posts}/>
                     </div>
 
                     {/* right sidebar */}
@@ -210,10 +76,10 @@ export default function App() {
 
             {/* mobile menu */}
             <div
-                className="fixed w-full h-full bg-black bg-opacity-25 left-0 top-0 z-10 opacity-0 invisible transition-all duration-500 xl:hidden"
+                className={`fixed w-full h-full bg-black bg-opacity-25 left-0 top-0 z-10 ${!isOpenSidebar ? 'opacity-0 invisible' : ''} transition-all duration-500 xl:hidden`}
                 id="sidebar_wrapper">
                 <div
-                    className="fixed top-0 w-72 h-full bg-white shadow-md z-10 flex flex-col transition-all duration-500 -left-80"
+                    className={`fixed top-0 w-72 h-full bg-white shadow-md z-10 flex flex-col transition-all duration-500 ${isOpenSidebar ? 'left-0' : '-left-80'}`}
                     id="sidebar">
 
                     {/* search and menu */}
@@ -257,91 +123,7 @@ export default function App() {
                     </div>
 
                     {/* categories */}
-                    <div className="w-full mt-3 px-4 ">
-                        <h3 className="text-xl font-semibold text-gray-700 mb-3 font-roboto">Categories</h3>
-                        <div className="space-y-2">
-                            <a href="#"
-                               className="flex leading-4 items-center text-gray-700 font-semibold text-sm uppercase transition hover:text-blue-500">
-                        <span className="mr-2">
-                            <i className="far fa-folder-open"></i>
-                        </span>
-                                <span>Beauti</span>
-                                <p className="ml-auto font-normal">(12)</p>
-                            </a>
-                            <a href="#"
-                               className="flex leading-4 items-center text-gray-700 font-semibold text-sm uppercase transition hover:text-blue-500">
-                        <span className="mr-2">
-                            <i className="far fa-folder-open"></i>
-                        </span>
-                                <span>Business</span>
-                                <p className="ml-auto font-normal">(15)</p>
-                            </a>
-                            <a href="#"
-                               className="flex leading-4 items-center text-gray-700 font-semibold text-sm uppercase transition hover:text-blue-500">
-                        <span className="mr-2">
-                            <i className="far fa-folder-open"></i>
-                        </span>
-                                <span>Fashion</span>
-                                <p className="ml-auto font-normal">(5)</p>
-                            </a>
-                            <a href="#"
-                               className="flex leading-4 items-center text-gray-700 font-semibold text-sm uppercase transition hover:text-blue-500">
-                        <span className="mr-2">
-                            <i className="far fa-folder-open"></i>
-                        </span>
-                                <span>Food</span>
-                                <p className="ml-auto font-normal">(10)</p>
-                            </a>
-                            <a href="#"
-                               className="flex leading-4 items-center text-gray-700 font-semibold text-sm uppercase transition hover:text-blue-500">
-                        <span className="mr-2">
-                            <i className="far fa-folder-open"></i>
-                        </span>
-                                <span>Learn</span>
-                                <p className="ml-auto font-normal">(3)</p>
-                            </a>
-                            <a href="#"
-                               className="flex leading-4 items-center text-gray-700 font-semibold text-sm uppercase transition hover:text-blue-500">
-                        <span className="mr-2">
-                            <i className="far fa-folder-open"></i>
-                        </span>
-                                <span>Music</span>
-                                <p className="ml-auto font-normal">(7)</p>
-                            </a>
-                            <a href="#"
-                               className="flex leading-4 items-center text-gray-700 font-semibold text-sm uppercase transition hover:text-blue-500">
-                        <span className="mr-2">
-                            <i className="far fa-folder-open"></i>
-                        </span>
-                                <span>Nature</span>
-                                <p className="ml-auto font-normal">(0)</p>
-                            </a>
-                            <a href="#"
-                               className="flex leading-4 items-center text-gray-700 font-semibold text-sm uppercase transition hover:text-blue-500">
-                        <span className="mr-2">
-                            <i className="far fa-folder-open"></i>
-                        </span>
-                                <span>People</span>
-                                <p className="ml-auto font-normal">(13)</p>
-                            </a>
-                            <a href="#"
-                               className="flex leading-4 items-center text-gray-700 font-semibold text-sm uppercase transition hover:text-blue-500">
-                        <span className="mr-2">
-                            <i className="far fa-folder-open"></i>
-                        </span>
-                                <span>Sports</span>
-                                <p className="ml-auto font-normal">(7)</p>
-                            </a>
-                            <a href="#"
-                               className="flex leading-4 items-center text-gray-700 font-semibold text-sm uppercase transition hover:text-blue-500">
-                        <span className="mr-2">
-                            <i className="far fa-folder-open"></i>
-                        </span>
-                                <span>Technology</span>
-                                <p className="ml-auto font-normal">(17)</p>
-                            </a>
-                        </div>
-                    </div>
+                    <Categories/>
                 </div>
             </div>
 
