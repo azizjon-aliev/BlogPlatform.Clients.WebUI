@@ -3,6 +3,8 @@ import {Categories} from "./Categories.tsx";
 import {RandomPostList} from "./Post/Random/RandomPostList.tsx";
 import {TagList} from "./Tag/TagList.tsx";
 import {SocialPluginList} from "./SocialPlugin/SocialPluginList.tsx";
+import {PopularPostList} from "./Post/Popular/PopularPostList.tsx";
+import {Footer} from "./Footer.tsx";
 
 export default function App() {
     return (
@@ -27,10 +29,10 @@ export default function App() {
 
                         {/* title */}
                         <div className="flex bg-white px-3 py-2 justify-between items-center rounded-sm mb-5">
-                            <h5 className="text-base uppercase font-semibold font-roboto">BUSINESS</h5>
+                            <h5 className="text-base uppercase font-semibold font-roboto">Категория 1</h5>
                             <a href="#"
                                className="text-white py-1 px-3 rounded-sm uppercase text-sm bg-blue-500 border border-blue-500 hover:text-blue-500 hover:bg-transparent transition">
-                                see more
+                                Все
                             </a>
                         </div>
 
@@ -197,59 +199,7 @@ export default function App() {
                         <SocialPluginList/>
 
                         {/* Popular posts */}
-                        <div className="w-full mt-8 bg-white shadow-sm rounded-sm p-4 ">
-                            <h3 className="text-xl font-semibold text-gray-700 mb-3 font-roboto">Popular Posts</h3>
-                            <div className="space-y-4">
-                                <a href="#" className="flex group">
-                                    <div className="flex-shrink-0">
-                                        <img src="src/images/img-5.jpg"
-                                             className="h-14 w-20 lg:w-14 xl:w-20 rounded object-cover"/>
-                                    </div>
-                                    <div className="flex-grow pl-3">
-                                        <h5
-                                            className="text-md leading-5 block font-roboto font-semibold  transition group-hover:text-blue-500">
-                                            Team Bitbose geared up to attend Blockchain
-                                        </h5>
-                                        <div className="flex text-gray-400 text-sm items-center">
-                                            <span className="mr-1 text-xs"><i className="far fa-clock"></i></span>
-                                            June 11, 2021
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#" className="flex group">
-                                    <div className="flex-shrink-0">
-                                        <img src="src/images/img-9.jpg"
-                                             className="h-14 w-20 lg:w-14 xl:w-20 rounded object-cover"/>
-                                    </div>
-                                    <div className="flex-grow pl-3">
-                                        <h5
-                                            className="text-md leading-5 block font-roboto font-semibold  transition group-hover:text-blue-500">
-                                            After a Caribbean Hurricane, the Battle
-                                        </h5>
-                                        <div className="flex text-gray-400 text-sm items-center">
-                                            <span className="mr-1 text-xs"><i className="far fa-clock"></i></span>
-                                            March 27, 2021
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#" className="flex group">
-                                    <div className="flex-shrink-0">
-                                        <img src="src/images/img-8.jpg"
-                                             className="h-14 w-20 lg:w-14 xl:w-20 rounded object-cover"/>
-                                    </div>
-                                    <div className="flex-grow pl-3">
-                                        <h5
-                                            className="text-md leading-5 block font-roboto font-semibold  transition group-hover:text-blue-500">
-                                            California sheriff’s deputy shot during ‘ambush’
-                                        </h5>
-                                        <div className="flex text-gray-400 text-sm items-center">
-                                            <span className="mr-1 text-xs"><i className="far fa-clock"></i></span>
-                                            Aprile 17, 2021
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                        <PopularPostList/>
 
                         {/* tag */}
                         <TagList/>
@@ -396,11 +346,7 @@ export default function App() {
             </div>
 
             {/* footer */}
-            <footer className="border-t py-4">
-                <p className=" text-sm text-center">Copyright © 2021 <span
-                    className="font-semibold">Programming Kit</span>
-                    All Rights Reserved</p>
-            </footer>
+            <Footer/>
         </div>
     )
 }

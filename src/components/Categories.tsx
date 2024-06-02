@@ -1,19 +1,14 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {Category} from "../models/Category.ts";
+import {getCategories} from "../services/CategoryService.ts";
 
 export const Categories = () => {
-    const [items] = useState([
-        {title: "test", count: 12},
-        {title: 'Business', count: 15},
-        {title: 'Fashion', count: 5},
-        {title: 'Food', count: 10},
-        {title: 'Learn', count: 3},
-        {title: 'Music', count: 7},
-        {title: 'Nature', count: 0},
-        {title: 'People', count: 13},
-        {title: 'Sports', count: 7},
-        {title: 'Technology', count: 17},
-    ]);
+    const [items, setItems] = useState<Category[]>([]);
+
+    useEffect(() => {
+        getCategories().then(data => setItems(data));
+    }, []);
 
     return (
         <div className="w-full bg-white shadow-sm rounded-sm p-4 ">
@@ -27,8 +22,8 @@ export const Categories = () => {
                         <span className="mr-2">
                             <FontAwesomeIcon icon={["far", "folder-open"]}/>
                         </span>
-                        <span>{item.title}</span>
-                        <p className="ml-auto font-normal">({item.count})</p>
+                        <span>{item.name}</span>
+                        <p className="ml-auto font-normal">({item.postsCount})</p>
                     </a>
                 ))}
             </div>
