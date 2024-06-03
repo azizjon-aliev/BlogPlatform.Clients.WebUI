@@ -1,7 +1,14 @@
 import Logo from '../assets/images/logo.png'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {useState} from "react";
 
 export default function Header() {
+    const [isSidebarOpen, setSidebarOpen] = useState(false);
+
+    const handleSidebarClick = () => {
+        setSidebarOpen(!isSidebarOpen);
+    };
+
     return (
         <nav className='shadow-sm'>
             <div className='container px-4 mx-auto flex items-center py-3'>
@@ -63,8 +70,9 @@ export default function Header() {
                     </a>
                 </div>
                 <div
-                    className='text-xl text-gray-700 cursor-pointer ml-4 xl:hidden block hover:text-blue-500 transition'
+                    className={`text-xl text-gray-700 cursor-pointer ml-4 xl:hidden block hover:text-blue-500 transition ${isSidebarOpen ? 'left-0' : '-left-80'}`}
                     id='open_sidebar'
+                    onClick={handleSidebarClick}
                 >
                     <FontAwesomeIcon icon={['fas', 'bars']}/>
                 </div>
