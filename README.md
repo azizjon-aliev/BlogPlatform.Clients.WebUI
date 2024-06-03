@@ -1,3 +1,5 @@
-1. docker run -p 3000:3000 my-react-app
+1. echo github_token | docker login ghrc.io -u azizjon-aliev --password-stdin
 
-2. docker run -p 80:3000 my-react-app
+2. docker build . -t ghcr.io/azizjon-aliev/blog-platform.clients.web-ui:latest
+
+3. docker push ghcr.io/azizjon-aliev/blog-platform.clients.web-ui:latest
